@@ -1,0 +1,266 @@
+{
+    "swagger": "2.0",
+    "info":{
+        "version": "1.0.0",
+        "title": "A Simple REST API Document",
+        "description":" A minimal REST API documentatoin example (Keywords: REST API, JSON, API documentation)",
+        "license": {
+            "name": "Susan",
+            "url":"localhost:3000"
+        }
+    },
+    
+    "basePath": "/",
+    "tags":[
+        {
+            "name": "courses",
+            "description": "API for courses in the system"
+        }
+    ],
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces":[
+        "applicaiton/json"
+    ],
+    "paths": {
+        "/api/courses": {
+            "get": {
+                "tags": [
+                    "courses"
+                ],
+                "summary": "Get all courses in system",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/courses"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "operationId": "postOneCourse",
+                "tags": [
+                    "courses"
+                ],
+                "summary": "Create a new course.",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "course",
+                        "required": true,
+                        "in": "body",
+                        "description": "Course to be added to course list..",
+                        "schema":{
+                            "$ref":"#/definitions/newcourse"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/course"
+                        }
+
+                    }
+
+                }
+            },
+            "delete": {
+                "operationId": "deleteAllCourses",
+                "tags": [
+                    "courses"
+                ],
+                "summary": "Delete all exist courses.",
+                "description": "Delete all exist courses in Database.",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "responses": {
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/course"
+                        }
+
+                    }
+
+                }
+            }
+        },
+        "/api/courses/{id}":{
+             "get": {
+                "operationId": "getCourseById",
+                "tags": [
+                    "courses"
+                ],
+                "summary": "Get one course in system",
+                "description": "Get one course by ID.",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "id",
+                    "required": true,
+                    "in": "path",
+                    "type": "integer",
+                    "description": "The course ID of the selected course."
+                }],
+                "responses": {                    
+                        "200": {
+                            "description": "OK",
+                            "schema": {
+                                "$ref": "#/definitions/course"
+                            }
+                        },                 
+                        "404": {
+                            "description": "The course with the given ID was not found!",
+                            "schema": {
+                                "$ref": "#/definitions/message"
+                            }
+                        }                    
+                }
+            },
+            "put": {
+                "operationId": "updateOneCourse",
+                "tags": [
+                    "courses"
+                ],
+                "summary": "Update an exist course.",
+                "description": "Update an exist course in Database.",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "type": "integer",
+                        "description": "The course ID of the selected course."
+                    },
+                    {
+                        "name": "course",
+                        "required": true,
+                        "in": "body",
+                        "description": "Course to be added to course list..",
+                        "schema":{
+                            "$ref":"#/definitions/newcourse"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/course"
+                        }
+
+                    }
+
+                }
+            },
+            "delete": {
+                "operationId": "deleteCourseById",
+                "tags": [
+                    "courses"
+                ],
+                "summary": "Delete an exist course by ID.",
+                "consumes":[
+                    "application/json"
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "id",
+                    "required": true,
+                    "in": "path",
+                    "type": "integer",
+                    "description": "The ID of the course to be deleted."
+                }],
+                "responses": {
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/course"
+                        }
+                    },                        
+                    "404": {
+                        "description": "The course with the given ID was not found!",
+                        "schema": {
+                            "$ref": "#/definitions/message"
+                        }
+                    }                       
+                }
+            }
+        }
+    },
+
+    "definitions":{
+         "course":{
+            "type":"object",
+            "properties":{
+                "id": {
+                    "type": "number"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the course."
+                }
+            }
+        },
+        "newcourse":{
+            "type":"object",
+            "required": [
+                "name"
+            ],
+            "properties":{
+                 "name": {
+                    "type": "string",
+                    "description": "The name of the course."
+                }
+            }
+        },         
+        "courses": {
+            "type": "object",
+            "properties": {
+                "course": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/course"
+                    }
+                }
+            }
+        },
+        "message": {
+            "type":"string"
+        }
+    }
+}

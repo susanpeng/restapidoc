@@ -1,0 +1,43 @@
+body {
+    background-color: lightblue ;
+    margin: auto;
+    width: 80%;
+}
+h1 {
+    color: darkblue;
+    font-family: verdana;
+    text-align: center;
+}
+
+h2 {
+    color: darkblue;
+    font-family: verdana;
+    text-align: left;
+    font-size: 25px;
+    font-weight: bold; 
+}
+
+p {
+    font-family: verdana;
+    font-size: 14px;
+}
+
+fieldset {border: 0px;}
+
+ul {
+    font-family: verdana;
+    font-size: 14px;
+}
+
+a {
+    font-family: Verdana; 
+    font-size: 14px;  
+}
+
+
+.main {
+    width: 80%;
+   /* font-family: 'Courier New', Courier, monospace;
+    */align-self:center;
+    margin: 50px 100px 10px 100px;
+}

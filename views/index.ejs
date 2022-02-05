@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>REST API Documentation Example</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <div class="main">
+    <h1>REST API Documentation</h1></br>
+    <p>This article introduces a simple RESTful API interactive Documentation created using Swagger.</p>
+    <ol>
+    <li><a href="#intro">API Introduction</a></li>
+    <li><a href="#data">Data Source</a></li>
+    <li><a href="#node">Node.js</a></li>
+    <li><a href="#swagger">Swagger</a></li> 
+    <li><a href="#module">Other Modules</a></li>
+    <li><a href="#swdoc">Interactive REST API Documentation</a></li>
+    <li><a href="#struc">Files and Structure</a></li>
+    <li><a href="#code">Code</a></li>
+    </ol>  
+    <a id="intro"><h2>API Introduction</h2></a>
+      <p>Using this REST API, you can create, read, update, and delete a course by its id, or get and delete all courses.
+      To simplify the example, I used an array to store courses. 
+      <p>This API has six methods:
+        <ul>
+          <li>Get all courses</li>
+          <li>Get a course by id</li>
+          <li>Add a new course</li>
+          <li>Update a course by id</li>
+          <li>Delete a course by id</li>
+          <li>Delete all courses</li>
+        </ul>
+      </p>
+
+    <a id="data"><h2>Data Source</h2></a>
+      <p>An array named courses is used to store data.</p>
+      <p>const courses = [</p>
+      <ul style="list-style-type:none;">
+      <li>{id:1, name: 'course1'},</li>
+      <li>{id:2, name: 'course2'},</li>
+      <li>{id:3, name: 'course3'},</li>
+      <li>{id:4, name: 'course4'},</li>
+      </ul>
+      <p>];</p>
+  
+    <a id="node"><h2>Node.js And Express.js</h2></a>
+      <p>I built this RESTful API with node.js and express.js; I deployed it on Heroku.</p>
+      <a id="module"><h2>Other Modules</h2></a>
+      <p>I also used the following modules in this example:</p>
+      <ul>
+          <li>Joi - used for object schema description and data validation.</li>
+          <li>Swagger UI Express - used to generate interactive documentation (a web page) for a REST API by reading an Open API specification document (in the format of JSON or YAML).</li>
+          <li>ejs - used as the template engine for this example. </li>
+          <li>body-parser - used to extract the entire body portion of an incoming request stream and exposes it on req.body. </li>
+      </ul>
+
+    <a id="swagger"><h2>Swagger</h2></a>
+      <p>II used Swagger to document the example REST API. swagger.json is the document file. (YMAL is also a popular language used to write Swagger Document for REST API documentation).</p>
+      <p>The advantage of using Swagger to document REST API is that it provides a dynamic document with "Try it out" buttons. Developers can click the "Try it out" buttons to see how the API works.</P>
+      <P>Writing a Swagger API specification file to define an API before starting to code is a good workflow for creating REST API and its document.</P>
+
+    <a id="swdoc"><h2>Interactive REST API Documentation</h2></a>
+    The module "swagger-ui-express" is included in the server.js file, so the swagger API interactive documentation can be automatically created. To see the interactive API Documentation, <a href="/api-docs">Click Here.</a></p>
+    <!--<p>To see the Swagger created API Documentation, <form action="/api-docs" method="get"> <input type="submit" value="Click Here!"></form></p>
+    -->
+    <a id="struc"><h2>Files and Structure</h2></a>
+      <p>This example includes four files:</p>
+      <ul>
+        <li>server.js - The example REST API created using node.js and express.</li>
+        <li>swagger.json - Swagger document file for the example REST API in JSON format (not YAML format).</li>
+        <li>index.ejs - A web page that explains this example. It's this page.</li>
+        <li>style.css - Describes how the elements in the index.ejs are displayed on the screen.</li>
+      </ul>
+      <p>The following is the folder structure under the API-example folder: </p>
+      <img src="/images/structure.png" style="width:500px; height:250px">
+    <a id="code"><h2>Code</h2></a>
+      <p>To read or download the code on GitHub, <a href="https://github.com/susanpeng/RESTAPI"> Click Here.</a></p>  
+  
+      <div>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">REST API Documentation</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://morning67890.herokuapp.com/" property="cc:attributionName" rel="cc:attributionURL">Susan Peng</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="https://morning67890.herokuapp.com/" rel="dct:source">https://morning67890.herokuapp.com/</a>.
+        </div>
+    </div>
+
+  
+  </body>
+</html>
